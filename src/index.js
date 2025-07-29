@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import ProtectedRoute from './ProtectedRoute';
 import Login from "./Login/Login";
-import Dashboard from "./Dashboard/Dashboard";
+import Dashboard from './components/Dashboard/Dashboard';
 import reportWebVitals from './reportWebVitals';
 
 const isLoggedIn = () => localStorage.getItem("isLoggedIn") === "true";
