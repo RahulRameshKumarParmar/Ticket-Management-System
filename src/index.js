@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import ProtectedRoute from './ProtectedRoute';
-import Login from "./Login/Login";
+import Login from "./components/Login/Login";
 import Dashboard from './components/Dashboard/Dashboard';
 import reportWebVitals from './reportWebVitals';
 
