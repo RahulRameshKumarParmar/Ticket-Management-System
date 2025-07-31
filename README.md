@@ -30,3 +30,5 @@ A simple, clean, and fully responsive Ticket Management System built using **Rea
 - 💾 Data persists across refresh using `localStorage`
 - 📱 Fully responsive design with custom CSS
 - 🧠 Clean code structure and component-based layout
+
+📌 This project is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Commercial use is strictly prohibited.
