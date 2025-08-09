@@ -24,8 +24,6 @@ const Dashboard = () => {
   const handleCreateTicket = (ticket) => {
     const updated = [...tickets, ticket];
     setTickets(updated);
-    localStorage.setItem("tickets", JSON.stringify(updated)); 
-    // Save immediately
   };
 
   const handleUpdateTicketStatus = (id, newStatus) => {
@@ -34,14 +32,13 @@ const Dashboard = () => {
     );
     setTickets(updated);
     localStorage.setItem("tickets", JSON.stringify(updated)); 
-    // Save immediately
   };
 
   return (
     <>
       <Navbar/>
       <TicketForm onCreateTicket={handleCreateTicket} />
-      <TicketBoard tickets={tickets} onStatusChange={handleUpdateTicketStatus} />
+      <TicketBoard tickets={tickets} setTickets={setTickets} onStatusChange={handleUpdateTicketStatus} />
     </>
   );
 };

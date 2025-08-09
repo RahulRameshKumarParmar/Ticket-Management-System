@@ -1,5 +1,4 @@
 .ticket-column {
-  background-color: #f1f8ff;
   padding: 1rem;
   width: 260px;
   min-height: 300px;
@@ -11,7 +10,7 @@
   transition: transform 0.2s ease;
 }
 
-.ticket-column:hover {
+.ticket-column.hover-enabled:hover {
   transform: scale(1.02);
 }
 
@@ -22,15 +21,27 @@
 }
 
 .ticket-card {
-  background-color: white;
+  display: flex;
+  justify-content: space-between;
   border-left: 4px solid #1976d2;
   padding: 0.7rem;
   border-radius: 5px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   cursor: grab;
-  transition: background 0.2s ease;
 }
 
 .ticket-card:hover {
   background-color: #f0faff;
+}
+
+.delete-button{
+  border: none;
+  font-size: large;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.delete-button:hover{
+  border: 0.5px solid rgba(0, 0, 0, 0.411);
+  border-radius: 7px;
 }

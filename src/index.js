@@ -6,6 +6,7 @@ import ProtectedRoute from './ProtectedRoute';
 import Login from "./components/Login/Login";
 import Dashboard from './components/Dashboard/Dashboard';
 import reportWebVitals from './reportWebVitals';
+import ContextAPI from './components/Dashboard/ContextAPI';
 
 const isLoggedIn = () => localStorage.getItem("isLoggedIn") === "true";
 
@@ -18,17 +19,19 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <ProtectedRoute>
-        <Dashboard />
+        <Dashboard/>
       </ProtectedRoute>
-    ),
+    )
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <ContextAPI>
+      <RouterProvider router={router} />
+    </ContextAPI>
+  </React.StrictMode >
 );
 
 // If you want to start measuring performance in your app, pass a function
