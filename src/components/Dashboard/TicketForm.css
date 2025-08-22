@@ -3,10 +3,10 @@
 }
 
 .ticket-form {
-  position: absolute;
+  position: fixed;
   left: 50%;
+  top: 30%;
   transform: translate(-50%, -500%);
-  width: 500px;
   margin: 1.5rem auto;
   background: #e3f2fd;
   padding: 1.5rem;
@@ -41,4 +41,34 @@
 
 .ticket-form button:hover {
   background-color: #135ba1;
+}
+
+@media (min-width: 250px){
+  .ticket-form{
+    width: 90%;
+  }  
+}
+
+@media (min-width: 576px){
+  .ticket-form{
+    width: 80%;
+  }  
+}
+
+@media (min-width: 768px){
+  .ticket-form{
+    width: 60%;
+  }  
+}
+
+@media (min-width: 978px){
+  .ticket-form{
+    width: 50%;
+  }  
+}
+
+@media (min-width: 1200px){
+  .ticket-form{
+    width: 45%;
+  }  
 }

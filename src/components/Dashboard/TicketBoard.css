@@ -1,8 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .ticket-board {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 1rem;
-  gap: 1rem;
+  gap: 2rem;
+  width: 100%;
   background-color: grey;
+}
+
+@media (min-width: 250px){
+  /* .ticket-board{
+    width: 100%;
+  } */
+}
+
+@media (min-width: 576px){
+
 }

@@ -1,27 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
-import ProtectedRoute from './ProtectedRoute';
+import { RouterProvider, createBrowserRouter} from "react-router-dom";
 import Login from "./components/Login/Login";
 import Dashboard from './components/Dashboard/Dashboard';
 import reportWebVitals from './reportWebVitals';
 import ContextAPI from './components/Dashboard/ContextAPI';
 
-const isLoggedIn = () => localStorage.getItem("isLoggedIn") === "true";
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: isLoggedIn() ? <Navigate to="/dashboard" /> : <Login />,
+    element: <Login />
   },
   {
     path: "/dashboard",
-    element: (
-      <ProtectedRoute>
-        <Dashboard/>
-      </ProtectedRoute>
-    )
+    element: <Dashboard />
   },
 ]);
 

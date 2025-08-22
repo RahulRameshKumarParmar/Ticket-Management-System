@@ -1,0 +1,139 @@
+.floating-tickets {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    padding: 0.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: float 3s ease-in-out infinite;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
+}
+
+.ticket-highlight {
+    z-index: 100;
+}
+
+
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: var(--ticket-animation, rotate(0deg)) translateY(0px);
+    }
+
+    50% {
+        transform: var(--ticket-animation, rotate(0deg)) translateY(-10px);
+    }
+}
+
+.floating-tickets-status {
+    background-color: whitesmoke;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+@media (min-width: 250px) {
+    .ticket-1 {
+        margin-top: 7%;
+        margin-left: 32%;
+    }
+
+    .ticket-2 {
+        margin-top: -5%;
+        margin-left: 39%;
+    }
+
+    .ticket-3 {
+        margin-top: -26%;
+        margin-left: 23%;
+    }
+
+    .floating-tickets {
+        padding: 1rem;
+        width: 35%;
+        height: 7rem
+    }
+
+    .floating-tickets-title {
+        font-size: 1rem;
+    }
+
+    .floating-tickets-status {
+        font-size: 0.85rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .ticket-1 {
+        margin-top: 7%;
+        margin-left: 25%;
+    }
+
+    .ticket-2 {
+        margin-top: -7%;
+        margin-left: 20%;
+    }
+
+    .ticket-3 {
+        margin-top: -52%;
+        margin-left: 10%;
+    }
+
+    .floating-tickets {
+        width: 56%;
+        height: 10rem;
+    }
+
+    .floating-tickets-title {
+        font-size: 1.5rem;
+    }
+
+    .floating-tickets-status {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 998px) {
+    .ticket-1 {
+        margin-top: 7%;
+        margin-left: 25%;
+    }
+
+    .ticket-2 {
+        margin-top: -7%;
+        margin-left: 20%;
+    }
+
+    .ticket-3 {
+        margin-top: -50%;
+        margin-left: 10%;
+    }
+
+    .floating-tickets {
+        width: 45%;
+        height: 11rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .ticket-1 {
+        margin-top: 7%;
+        margin-left: 25%;
+    }
+
+    .ticket-2 {
+        margin-top: -3%;
+        margin-left: 20%;
+    }
+
+    .ticket-3 {
+        margin-top: -40%;
+        margin-left: 10%;
+    }
+}

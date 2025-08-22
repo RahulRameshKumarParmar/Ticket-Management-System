@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./TicketColumn.css";
 import { globalAccess } from "./ContextAPI";
+import { FaTrash } from "react-icons/fa";
 
 const TicketColumn = ({ status, tickets, setTickets, onStatusChange }) => {
   const handleDrop = (e) => {
@@ -15,12 +16,17 @@ const TicketColumn = ({ status, tickets, setTickets, onStatusChange }) => {
   };
 
   let { newTicketForm } = useContext(globalAccess);
+  const [updateTicket, setUpdateTicket] = useState(false);
 
   const handleDelete = (id) => {
     const storedTickets = JSON.parse(localStorage.getItem("tickets") || []);
     const updatedStoredTickets = storedTickets.filter((ticket) => ticket.id !== id);
     setTickets(updatedStoredTickets);
     localStorage.setItem("tickets", JSON.stringify(updatedStoredTickets));
+  }
+
+  const handleUpdate = (id) => {
+    setUpdateTicket(!updateTicket);
   }
 
   return (
@@ -34,12 +40,17 @@ const TicketColumn = ({ status, tickets, setTickets, onStatusChange }) => {
           draggable
           onDragStart={(e) => e.dataTransfer.setData("ticketId", ticket.id)}
         >
-          <div>
-            <strong>{ticket.title}</strong>
+          <div className="ticket-card-details">
+            <strong onClick={() => handleUpdate(ticket.id)}>{(updateTicket && ticket.id)
+              ?
+              <input type="text" />
+              :
+              ticket.title
+            }</strong>
             <p>{ticket.customer}</p>
           </div>
           <div>
-            <button onClick={() => handleDelete(ticket.id)} className="delete-button">&#128465;</button>
+            <button onClick={() => handleDelete(ticket.id)} className="delete-button"><FaTrash size={15}/></button>
           </div>
         </div>
       ))}

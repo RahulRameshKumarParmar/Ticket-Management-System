@@ -1,27 +1,132 @@
 .navbar {
-  background-color: #3f51b5;
+  height: 3rem;
+  width: 100%;
+  background-color: #357ac8;
   color: white;
-  padding: 1rem 2rem;
+  padding: 2.5rem 2rem;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
 }
 
-.navbar h1 {
-  font-size: 1.5rem;
+.title-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.navbar button {
+.tasket-icon {
+  margin-top: 0.3rem;
+}
+
+.title-heading {
+  font-size: 1.8rem;
+}
+
+.new-ticket-btn,
+.logout-btn {
+  font-size: 0.95rem;
   padding: 0.5rem 1rem;
   margin: 0 2rem 0 0;
-  background-color: #f44336;
+  background-color: transparent;
   border: none;
   border-radius: 5px;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .navbar button:hover {
-  background-color: #d32f2f;
+  background-color: white;
+  color: black;
+}
+
+.menu-logo {
+  display: none;
+}
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.blur-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-navbar-btn {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
+  display: none;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.show-mobile-navbar-btn{
+  display: flex;
+  z-index: 10;
+}
+
+.mobile-new-ticket-btn,
+.mobile-logout-btn {
+  width: 90%;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.mobile-new-ticket-btn:hover,
+.mobile-logout-btn:hover {
+  transform: translateY(-5px);
+}
+
+.mobile-new-ticket-btn {
+  background-color: #357ac8;
+  color: white;
+  border: none;
+}
+
+.mobile-logout-btn {
+  background-color: white;
+  color: black;
+  border: 1px solid rgba(128, 128, 128, 0.603);
+}
+
+@media (min-width: 250px) {
+  .mobile-navbar-menu .menu-logo {
+    display: block;
+  }
+
+  .navbar-btn {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .navbar-btn {
+    display: block;
+  }
+
+  .mobile-navbar-menu {
+    display: none;
+  }
 }
