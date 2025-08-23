@@ -2,12 +2,12 @@ import { useContext, useState } from "react";
 import "./TicketForm.css";
 import { globalAccess } from "./ContextAPI";
 
-const TicketForm = ({ onCreateTicket }) => {
+const TicketForm = () => {
   const [customer, setCustomer] = useState("");
   const [title, setTitle] = useState("");
   const [status, setStatus] = useState("Assigned");
 
-  let { newTicketForm, setNewTicketForm } = useContext(globalAccess);
+  let { newTicketForm, setNewTicketForm, handleCreateTicket} = useContext(globalAccess);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,12 +19,12 @@ const TicketForm = ({ onCreateTicket }) => {
 
     const newTicket = {
       id: Date.now(), // unique ID
-      customer: customer,
-      title: title,
+      customer: customer.trim(),
+      title: title.trim(),
       status: status,
     };
 
-    onCreateTicket(newTicket);
+    handleCreateTicket(newTicket);
 
     // Reset form
     setCustomer("");

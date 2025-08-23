@@ -1,58 +1,39 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { useDroppable } from "@dnd-kit/core";
 import "./TicketColumn.css";
 import { globalAccess } from "./ContextAPI";
-import { FaTrash } from "react-icons/fa";
+import DraggableTicket from "./DraggableTicket";
 
-const TicketColumn = ({ status, tickets, setTickets, onStatusChange }) => {
-  const handleDrop = (e) => {
-    const id = Number(e.dataTransfer.getData("ticketId"));
-    if (status !== "Closed") {
-      onStatusChange(id, status);
-    }
-  };
+const TicketColumn = ({ status, tickets }) => {
 
-  const allowDrop = (e) => {
-    e.preventDefault();
-  };
+  const { newTicketForm, tickets: allTickets, setTickets } = useContext(globalAccess);
 
-  let { newTicketForm } = useContext(globalAccess);
-  const [updateTicket, setUpdateTicket] = useState(false);
+  const { setNodeRef, isOver } = useDroppable({ id: status });
+
+  // Only allow drag-over highlight if not Closed
+  const isDroppable = status !== "Closed";
 
   const handleDelete = (id) => {
-    const storedTickets = JSON.parse(localStorage.getItem("tickets") || []);
-    const updatedStoredTickets = storedTickets.filter((ticket) => ticket.id !== id);
-    setTickets(updatedStoredTickets);
-    localStorage.setItem("tickets", JSON.stringify(updatedStoredTickets));
-  }
-
-  const handleUpdate = (id) => {
-    setUpdateTicket(!updateTicket);
-  }
+    const updated = allTickets.filter((t) => t?.id !== id);
+    setTickets(updated);
+    localStorage.setItem("tickets", JSON.stringify(updated));
+  };
 
   return (
-    <div style={{ backgroundColor: newTicketForm ? "grey" : " #f1f8ff" }} className={`ticket-column ${(newTicketForm) ? "" : "hover-enabled"}`} onDrop={handleDrop} onDragOver={allowDrop}>
+    <div
+      ref={setNodeRef}
+      style={{ backgroundColor: newTicketForm ? "grey" : "#f1f8ff", cursor: status === "Closed" ? "no-drop" : "grab" }}
+      className={`ticket-column ${newTicketForm ? "" : "hover-enabled"} ${isOver && isDroppable ? "drag-over" : ""
+        }`}
+    >
       <h3>{status}</h3>
-      {tickets.map((ticket) => (
-        <div
-          style={{ backgroundColor: newTicketForm ? "grey" : "white" }}
-          key={ticket.id}
-          className="ticket-card"
-          draggable
-          onDragStart={(e) => e.dataTransfer.setData("ticketId", ticket.id)}
-        >
-          <div className="ticket-card-details">
-            <strong onClick={() => handleUpdate(ticket.id)}>{(updateTicket && ticket.id)
-              ?
-              <input type="text" />
-              :
-              ticket.title
-            }</strong>
-            <p>{ticket.customer}</p>
-          </div>
-          <div>
-            <button onClick={() => handleDelete(ticket.id)} className="delete-button"><FaTrash size={15}/></button>
-          </div>
-        </div>
+      {tickets.map((t) => (
+        <DraggableTicket
+          key={t.id}
+          ticket={t}
+          onDelete={handleDelete}
+          newTicketForm={newTicketForm}
+        />
       ))}
     </div>
   );
