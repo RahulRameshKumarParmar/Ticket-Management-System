@@ -98,7 +98,7 @@ const Login = () => {
               <label>Remember Me</label>
             </div>
             <div>
-              <a className="forget-password-option" href="#">Forget Password?</a>
+              <a className="forget-password-option" href="#" onClick={(e) => e.preventDefault()}>Forget Password?</a>
             </div>
           </div>
           <button className="login-button" onClick={handleLogin}>Login</button>

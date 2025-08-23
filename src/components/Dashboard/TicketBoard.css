@@ -13,13 +13,3 @@
   width: 100%;
   background-color: grey;
 }
-
-@media (min-width: 250px){
-  /* .ticket-board{
-    width: 100%;
-  } */
-}
-
-@media (min-width: 576px){
-
-}

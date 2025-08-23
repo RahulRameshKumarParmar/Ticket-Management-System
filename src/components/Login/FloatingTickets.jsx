@@ -11,24 +11,18 @@ export default function FloatingTickets() {
             title: "Feature request",
             status: "Assigned",
             transform: "rotate(-10deg)"
-            // top: "7%",
-            // left: "25%"
         },
         {
             id: 2,
             title: "Email delivery problem",
             status: "Resolved",
             transform: "rotate(10deg)"
-            // left: "20%",
-            // top: "-3%"
         },
         {
             id: 3,
             title: "Bug in dashboard",
             status: "In Process",
             transform: "rotate(-14deg)"
-            // left: "10%",
-            // top: "-40%"
         }
     ]
     return (
